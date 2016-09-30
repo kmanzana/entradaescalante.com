@@ -46,17 +46,29 @@ configure :build do
   # activate :minify_javascript
 end
 
-# configure :staging do
-puts ENV['AWS_BUCKET']
-puts ENV['AWS_ACCESS_KEY_ID']
-puts ENV['AWS_SECRET_ACCESS_KEY']
+configure :staging do
   activate :s3_sync do |s3_sync|
-    s3_sync.bucket                     = ENV['AWS_BUCKET']
+    s3_sync.bucket                     = 'staging.entradaescalante.com'
     s3_sync.region                     = 'us-west-2'
     s3_sync.aws_access_key_id          = ENV['AWS_ACCESS_KEY_ID']
     s3_sync.aws_secret_access_key      = ENV['AWS_SECRET_ACCESS_KEY']
     s3_sync.prefix                     = ''
     s3_sync.index_document             = 'index.html'
-    # s3_sync.error_document             = '404.html'
+    s3_sync.error_document             = '404.html'
   end
-# end
+end
+
+configure :production do
+  activate :s3_sync do |s3_sync|
+    puts ENV['AWS_ACCESS_KEY_ID']
+    puts ENV['AWS_SECRET_ACCESS_KEY']
+
+    s3_sync.bucket                     = 'entradaescalante.com'
+    s3_sync.region                     = 'us-east-1'
+    s3_sync.aws_access_key_id          = ENV['AWS_ACCESS_KEY_ID']
+    s3_sync.aws_secret_access_key      = ENV['AWS_SECRET_ACCESS_KEY']
+    s3_sync.prefix                     = ''
+    s3_sync.index_document             = 'index.html'
+    s3_sync.error_document             = '404.html'
+  end
+end
