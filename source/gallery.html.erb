@@ -22,58 +22,71 @@ active_tab: gallery
   </div>
 </div>
 
-<div class="mg-gallery-page">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-     <!--    <div class="mg-filter">
-          <form id="mg-filter">
+<div class='mg-gallery-page'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12'>
+     <!--    <div class='mg-filter'>
+          <form id='mg-filter'>
             <fieldset>
-              <label class="btn btn-dark btn-main"><input type="radio" name="filter" value="all" checked="checked">All</label>
-              <label class="btn btn-dark"><input type="radio" name="filter" value="classic">classic</label>
-              <label class="btn btn-dark"><input type="radio" name="filter" value="deluxe">deluxe</label>
-              <label class="btn btn-dark"><input type="radio" name="filter" value="royal">royal</label>
+              <label class='btn btn-dark btn-main'><input type='radio' name='filter' value='all' checked='checked'>All</label>
+              <label class='btn btn-dark'><input type='radio' name='filter' value='classic'>classic</label>
+              <label class='btn btn-dark'><input type='radio' name='filter' value='deluxe'>deluxe</label>
+              <label class='btn btn-dark'><input type='radio' name='filter' value='royal'>royal</label>
             </fieldset>
           </form>
         </div> -->
 
-        <div class="row" id="mg-grid">
-          <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
-            <a href="/images/stars.jpg" data-lightbox-gallery="rooms"><img src="images/stars.jpg" class="img-responsive" alt="grand staircase-escalante national monument stars" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <!-- <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
-            <a href="images/room-2.png" data-lightbox-gallery="rooms"><img src="images/room-2.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-3.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
-            <a href="images/room-4.png" data-lightbox-gallery="rooms"><img src="images/room-4.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
-            <a href="images/room-1.png" data-lightbox-gallery="rooms"><img src="images/room-5.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
-            <a href="images/room-2.png" data-lightbox-gallery="rooms"><img src="images/room-6.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-7.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-8.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-9.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["royal"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-10.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["deluxe"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-11.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure>
-          <figure class="col-md-4 mg-gallery-item" data-groups='["classic"]'>
-            <a href="images/room-3.png" data-lightbox-gallery="rooms"><img src="images/room-12.png" class="img-responsive" alt="" /><span class="mg-gallery-overlayer"><i class="fa fa-search-plus"></i></span></a>
-          </figure> -->
+        <div class='row' id='mg-grid'>
+          <%= partial :_image, locals: { image: :storms,
+            alt: 'utah highway 12 all american road storms',
+            caption: 'Storms moving in on All-American Road Highway 12 just east of Escalante' } %>
+          <%= partial :_image, locals: { image: :stars,
+            alt: 'grand staircase-escalante national monument stars',
+            caption: 'Escalante and nearby areas have some of the darkest skies in the U.S.' } %>
+          <%= partial :_image, locals: { image: :alcove,
+            alt: 'big alcove along the escalante river',
+            caption: 'A big alcove along the Escalante river a short walk from town' } %>
+          <%= partial :_image, locals: { image: :boulder_creek_sunset,
+            alt: 'sunset boulder creek',
+            caption: 'Nearby scenery like this has inspired artists including Boulder\'s Scotty Mitchell' } %>
+          <%= partial :_image, locals: { image: :slot_canyon,
+            alt: 'slot canyon near escalante',
+            caption: 'The public lands around Escalante run abound beautiful slot canyons' } %>
+          <%= partial :_image, locals: { image: :gulch,
+            alt: 'the gulch grand staircase-escalante national monument',
+            caption: 'The Gulch, one of the many side canyons that drains into the Escalante River' } %>
+
+          <%= partial :_image, locals: { image: :thunder_mountain,
+            alt: 'thunder mountain mountain biking',
+            caption: 'The unique Thunder Mountain Trail is not far away and open to mountain biking' } %>
+          <%= partial :_image, locals: { image: :waterfall,
+            alt: 'box wilderness waterfall',
+            caption: 'Hidden waterfalls are nice to find, especially when it\'s hot' } %>
+          <%= partial :_image, locals: { image: :fly_fishing,
+            alt: 'fly fishing on boulder mountain',
+            caption: 'Local outfitters make great instructors for fly fishing Boulder Mountain\'s creeks' } %>
+
+          <%= partial :_image, locals: { image: :cactus,
+            alt: 'cactus',
+            caption: 'Even though it is a desert, diverse flora and fauna can be admired' } %>
+          <%= partial :_image, locals: { image: :tour_of_utah,
+            alt: 'tour of utah escalante',
+            caption: 'The 12th annual Tour of Utah about to start stage 2 in Escalante' } %>
+          <%= partial :_image, locals: { image: :cedar_wash_arch,
+            alt: 'cedar wash arch',
+            caption: 'No need to go to Arches NP to see arches' } %>
+          <%= partial :_image, locals: { image: :arrowhead,
+            alt: 'arrowhead',
+            caption: 'Evidence of pre-columbian cilvilizations remain, but only if we leave artifacts as we found them' } %>
+          <%= partial :_image, locals: { image: :zebra,
+            alt: 'zebra slot canyon',
+            caption: 'The famous Zebra Slot Canyon makes for a great introductory canyon hike' } %>
+          <%= partial :_image, locals: { image: :early_weed_sunset,
+            alt: 'early weed bench sunset',
+            caption: 'Sunset from Early Weed Bench looking out toward the Henry Mountains' } %>
+
+
         </div>
       </div>
     </div>

@@ -1486,8 +1486,8 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   height: 100%;
   padding: 10px 20px;
   color: #fff;
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.8) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.8) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.5) 100%);
   -webkit-transition: background-color 0.3s;
           transition: background-color 0.3s;
 }
@@ -1500,9 +1500,9 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   position: relative;
   padding-bottom: 7px;
   margin-bottom: 4px;
-  -webkit-transform: translate(0, 120px);
-      -ms-transform: translate(0, 120px);
-          transform: translate(0, 120px);
+  -webkit-transform: translate(0, 150px);
+      -ms-transform: translate(0, 150px);
+          transform: translate(0, 150px);
   -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
           transition: opacity 0.4s, transform 0.4s;
   -webkit-transition-delay: 0.45s;
@@ -1538,9 +1538,9 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   margin-right: -1px;
   z-index: 99;
   position: relative;
-  -webkit-transform: translate(0, 120px);
-      -ms-transform: translate(0, 120px);
-          transform: translate(0, 120px);
+  -webkit-transform: translate(0, 150px);
+      -ms-transform: translate(0, 150px);
+          transform: translate(0, 150px);
   -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
           transition: opacity 0.4s, transform 0.4s;
   -webkit-transition-delay: 0.45s;
@@ -1551,9 +1551,9 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   font-size: 24px;
   font-weight: 300;
   margin-bottom: 10px;
-  -webkit-transform: translate(0, 120px);
-      -ms-transform: translate(0, 120px);
-          transform: translate(0, 120px);
+  -webkit-transform: translate(0, 150px);
+      -ms-transform: translate(0, 150px);
+          transform: translate(0, 150px);
   -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
           transition: opacity 0.4s, transform 0.4s;
   -webkit-transition-delay: 0.4s;
@@ -1647,7 +1647,7 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
           transform: translate(0, 235px);
 }
 .mg-room:hover figcaption {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .mg-room:hover figcaption p,
 .mg-room:hover figcaption ul,
@@ -4005,20 +4005,20 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
     right: 0px;
   }
   .mg-room figcaption h2 {
-    -webkit-transform: translate(0, 170px);
-        -ms-transform: translate(0, 170px);
-            transform: translate(0, 170px);
+    -webkit-transform: translate(0, 145px);
+        -ms-transform: translate(0, 145px);
+            transform: translate(0, 145px);
   }
   .mg-room figcaption .mg-room-rating {
     display: block;
-    -webkit-transform: translate(0, 170px);
-        -ms-transform: translate(0, 170px);
-            transform: translate(0, 170px);
+    -webkit-transform: translate(0, 145px);
+        -ms-transform: translate(0, 145px);
+            transform: translate(0, 145px);
   }
   .mg-room figcaption .mg-room-price {
-    -webkit-transform: translate(0, 170px);
-        -ms-transform: translate(0, 170px);
-            transform: translate(0, 170px);
+    -webkit-transform: translate(0, 145px);
+        -ms-transform: translate(0, 145px);
+            transform: translate(0, 145px);
   }
   .mg-room figcaption .btn-link {
     -webkit-transform: translate(0, 10px);

@@ -56,9 +56,6 @@ end
 
 configure :production do
   activate :s3_sync do |s3_sync|
-    puts ENV['AWS_ACCESS_KEY_ID']
-    puts ENV['AWS_SECRET_ACCESS_KEY']
-
     s3_sync.bucket                     = 'entradaescalante.com'
     s3_sync.region                     = 'us-east-1'
     s3_sync.aws_access_key_id          = ENV['AWS_ACCESS_KEY_ID']

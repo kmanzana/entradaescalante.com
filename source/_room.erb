@@ -1,0 +1,14 @@
+<div class='col-sm-4'>
+  <figure class='mg-room'>
+    <%= image_tag "/images/#{image}.jpg", alt: image_alt, class: 'img-responsive' %>
+    <figcaption>
+      <h2><%= name %></h2>
+      <div class='mg-room-price'>$<%= price %><sup>.00/Night</sup></div>
+      <p><%= description %></p>
+      <!-- <a href='#' class='btn btn-link'>View Details <i class='fa fa-angle-double-right'></i></a> -->
+      <%= link_to 'Book',
+        "//bookings.frontdeskanywhere.net/#account/1ZN160825A?rt=#{room_type}",
+        class: 'btn btn-main', target: :_blank %>
+    </figcaption>
+  </figure>
+</div>

@@ -1,0 +1,10 @@
+<figure class='col-md-4 mg-gallery-item' data-groups='["classic"]'>
+  <% link_to "/images/gallery/#{image}.jpg", title: caption, 'data-lightbox-gallery' => :rooms do %>
+    <%= image_tag "/images/gallery/#{image}.jpg",
+      alt: alt,
+      class: 'img-responsive' %>
+    <span class='mg-gallery-overlayer'>
+      <i class='fa fa-search-plus'></i>
+    </span>
+  <% end %>
+</figure>
