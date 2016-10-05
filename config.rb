@@ -3,6 +3,9 @@ require 'slim'
 
 Dotenv.load
 
+set :url_root, 'http://entradaescalante.com'
+activate :search_engine_sitemap
+
 ###
 # Page options, layouts, aliases and proxies
 ###
