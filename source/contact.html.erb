@@ -3,6 +3,11 @@ title: Entrada Escalante | Contact
 active_tab: contact
 ---
 
+<% content_for :scripts do %>
+  <%= javascript_include_tag '//maps.google.com/maps/api/js?key=AIzaSyBY9HsvYu2cKSwCRYWv6W5po2JCICNLdUc',
+                             'javascripts/gmaps.min' %>
+<% end %>
+
 <div class="mg-page-title parallax">
   <div class="container">
     <div class="row">
