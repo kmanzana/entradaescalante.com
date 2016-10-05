@@ -1744,6 +1744,7 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
   background-color: #C4764D;
   background-image: url(../images/about-bg.png);
   background-position: center center;
+  background-size: cover;
   color: #fff;
 }
 .mg-about img {
