@@ -652,6 +652,10 @@ ul.styled-list.list-star li:before {
   line-height: 20px;
   margin-left: 0 !important;
 }
+.header.sticky-on a.navbar-brand {
+  font-size: 35px;
+  line-height: 25px;
+}
 a.navbar-brand {
   text-align: left;
   color: white !important;

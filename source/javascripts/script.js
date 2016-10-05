@@ -11,7 +11,7 @@
 	/*
 	 * On Parallax for .parallax class
 	 */
-	$('.parallax').parallax("50%", 0.2);
+	$('.parallax').parallax("center", 0.2);
 
 	/*
 	 * Custom Data Fixed
