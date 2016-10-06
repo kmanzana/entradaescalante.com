@@ -59,6 +59,9 @@ configure :staging do
     s3_sync.index_document             = 'index.html'
     s3_sync.error_document             = '404.html'
   end
+
+  caching_policy 'text/html', max_age: 0, must_revalidate: true
+  default_caching_policy max_age:(60 * 60 * 24 * 365)
 end
 
 configure :production do
@@ -71,4 +74,7 @@ configure :production do
     s3_sync.index_document             = 'index.html'
     s3_sync.error_document             = '404.html'
   end
+
+  caching_policy 'text/html', max_age: 0, must_revalidate: true
+  default_caching_policy max_age:(60 * 60 * 24 * 365)
 end
