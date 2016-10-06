@@ -41,7 +41,11 @@ end
 
 # Build-specific configuration
 configure :build do
+  activate :asset_hash
+  activate :gzip
+  # activate :imageoptim # doesn't support MM4 https://github.com/plasticine/middleman-imageoptim/issues/46
   activate :minify_css
+  activate :minify_html
   activate :minify_javascript
 end
 
