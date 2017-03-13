@@ -7,7 +7,7 @@ cd entradaescalante.com
 ```
 
 #### Installing
-Install RVM with cygwin on windows using [this tutorial](http://blog.developwithpassion.com/2012/03/30/installing-rvm-with-cygwin-on-windows/)
+Install RVM [rvm.io/rvm/install](https://rvm.io/rvm/install)
 Make sure you are using the correct version of Ruby (see `Gemfile:3`)
 ``` bash
 rvm install ruby-2.4.0 # for Ruby version 2.4.0
