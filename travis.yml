@@ -1,0 +1,12 @@
+notifications:
+  webhooks:
+  - https://webhooks.datocms.com/058c8a84fefc28b8d2fc/deploy-results
+deploy:
+  - provider: script
+    script: deploy.sh staging
+    on:
+      branch: staging
+  - provider: script
+    script: deploy.sh production
+    on:
+      branch: master

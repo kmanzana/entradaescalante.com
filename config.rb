@@ -28,10 +28,6 @@ page '/*.txt', layout: false
 # Helpers
 ###
 
-configure :development do
-  activate :livereload
-end
-
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -39,7 +35,13 @@ end
 #   end
 # end
 
-# Build-specific configuration
+activate :dato, live_reload: true
+
+configure :development do
+  activate :livereload
+end
+
+
 configure :build do
   activate :asset_hash
   activate :gzip
