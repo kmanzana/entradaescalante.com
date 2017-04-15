@@ -5,7 +5,7 @@
       <h2><%= name %></h2>
       <div class='mg-room-price'>$<%= price %><sup>.00/Night</sup></div>
       <p><%= description %></p>
-      <!-- <a href='#' class='btn btn-link'>View Details <i class='fa fa-angle-double-right'></i></a> -->
+      <a href="/rooms/#{slug}" class='btn btn-link'>View Details <i class='fa fa-angle-double-right'></i></a>
       <%= link_to 'Book',
         "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room_type}",
         class: 'btn btn-main', target: :_blank %>

@@ -18,7 +18,7 @@ active_tab: home
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active beactive">
-      <%= image_tag 'images/slide-4.jpg', alt: 'spencer flat navajo sandstone near escalante' %>
+      <%= image_tag dato.homepage.landing.url, alt: 'spencer flat navajo sandstone near escalante' %>
       <div class="carousel-caption">
         <!-- <img src="images/stars.png" alt=""> -->
         <h2>Entrada Escalante Lodge</h2>
@@ -122,7 +122,8 @@ active_tab: home
               name: room.name,
               price: room.price,
               description: room.description,
-              room_type: room.front_desk_anywhere_type
+              room_type: room.front_desk_anywhere_type,
+              slug: room.name.downcase.gsub(' ', '_')
             } %>
           <% end %>
           <%#= partial :_room, locals: {
@@ -166,11 +167,11 @@ active_tab: home
     <div class="row">
       <div class="col-md-7">
         <h2 class="mg-sec-left-title">About the Entrada Escalante Lodge</h2>
-        <p><%= dato.homepage.about %></p>
+        <p><%= dato.homepage.about_text %></p>
       </div>
       <div class="col-md-5">
         <div class="video-responsive">
-          <%= image_tag '/images/front.jpg', alt: 'view of the entrada escalante lodge buildings' %>
+          <%= image_tag dato.homepage.about_image.url, alt: 'view of the entrada escalante lodge buildings' %>
         </div>
         <!-- <div class="video-responsive">
           <iframe src="https://player.vimeo.com/video/134008155" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

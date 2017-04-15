@@ -1,20 +1,14 @@
-notifications:
-  webhooks:
-  - https://webhooks.datocms.com/058c8a84fefc28b8d2fc/deploy-results
 language: ruby
-cache: bundler
 rvm:
-- 2.4.0
+  - 2.4.0
+cache: bundler
 branches:
   only:
   - master
   - staging
+before_script: ruby --version
 deploy:
-  - provider: script
-    script: ./deploy.sh staging
-    on:
-      branch: staging
-  - provider: script
-    script: ./deploy.sh production
-    on:
-      branch: master
+  provider: script
+  script: rvm $TRAVIS_RUBY_VERSION do ./deploy.sh
+  on:
+    branch: staging

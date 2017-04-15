@@ -1,3 +1,3 @@
-echo "Running Travis Deployment"
-middleman build
-middleman s3_sync --environment=$1
+bundle install
+bundle exec middleman build
+bundle exec middleman s3_sync --environment=staging
