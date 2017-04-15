@@ -5,12 +5,16 @@ language: ruby
 cache: bundler
 rvm:
 - 2.4.0
+branches:
+  only:
+  - master
+  - staging
 deploy:
   - provider: script
-    script: deploy.sh staging
+    script: ./deploy.sh staging
     on:
       branch: staging
   - provider: script
-    script: deploy.sh production
+    script: ./deploy.sh production
     on:
       branch: master
