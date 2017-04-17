@@ -70,7 +70,7 @@ active_tab: home
                   <input type="text" class="form-control js-check-in" placeholder="Check In">
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-6">
                 <select class="cs-select cs-skin-elastic js-nights">
                   <option value="" disabled selected>Nights</option>
                   <% (1..30).each do |nights| %>
@@ -133,7 +133,7 @@ active_tab: home
     <div class="row">
       <div class="col-md-7">
         <h2 class="mg-sec-left-title">About the Entrada Escalante Lodge</h2>
-        <p><%= dato.homepage.about_text %></p>
+        <p><%= markdown dato.homepage.about_text %></p>
       </div>
       <div class="col-md-5">
         <div class="video-responsive">

@@ -46,6 +46,12 @@ page '/*.txt', layout: false
 #   end
 # end
 
+helpers do
+  def markdown(source)
+    Tilt[:markdown].new { source }.render(self)
+  end
+end
+
 configure :development do
   activate :livereload
 end

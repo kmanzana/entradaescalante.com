@@ -28,7 +28,7 @@ active_tab: rooms
               </div>
               <div class="col-sm-7">
                 <h3 class="mg-avl-room-title">
-                  <a href="#"><%= room.name %></a> <span>$<%= room.price %><sup>.00</sup>/Night</span>
+                  <a href="<%= "/rooms/#{room.slug}.html" %>"><%= room.name %></a> <span>$<%= room.price %><sup>.00</sup></span>
                 </h3>
                 <p><%= room.short_description %></p>
                 <div class="row mg-room-fecilities">
