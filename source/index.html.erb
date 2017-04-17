@@ -116,15 +116,22 @@ active_tab: home
         </div>
         <div class="row">
           <% dato.rooms.each do |room| %>
-            <%= partial :_room, locals: {
-              image: room.name.downcase.gsub(' ', '_'),
-              image_alt: "#{room.name.downcase} room",
-              name: room.name,
-              price: room.price,
-              description: room.description,
-              room_type: room.front_desk_anywhere_type,
-              slug: room.name.downcase.gsub(' ', '_')
-            } %>
+            <div class='col-sm-4'>
+              <figure class='mg-room'>
+                <%= image_tag "/images/#{room.slug}.jpg", alt: "#{room.name.downcase} room", class: 'img-responsive' %>
+                <figcaption>
+                  <h2><%= room.name %></h2>
+                  <div class='mg-room-price'>$<%= room.price %><sup>.00/Night</sup></div>
+                  <p><%= room.short_description %></p>
+                  <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-link' do %>
+                    View Details <i class='fa fa-angle-double-right'></i>
+                  <% end %>
+                  <%= link_to 'Book',
+                    "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
+                    class: 'btn btn-main', target: :_blank %>
+                </figcaption>
+              </figure>
+            </div>
           <% end %>
         </div>
       </div>

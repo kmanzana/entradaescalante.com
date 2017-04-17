@@ -1,20 +1,31 @@
+---
+active_tab: rooms
+---
+
+<% current_page.data.title = "Entrada Escalante | #{room.name}" %>
+
 <% content_for :scripts do %>
   <%= javascript_include_tag 'javascripts/selectFx',
-                             'javascripts/bootstrap-datepicker.min' %>
+                             'javascripts/bootstrap-datepicker.min',
+                             'javascripts/owl.carousel.min',
+                             'javascripts/jssor.slider.mini',
+                             'javascripts/classie',
+                             'javascripts/starrr.min',
+                             'javascripts/nivo-lightbox.min' %>
 <% end %>
 
 <div class="mg-page-title parallax">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Single King Room</h2>
-        <p>Cogitavisse erant puerilis utrum efficiantur adhuc expeteretur.</p>
+        <h2><%= room.name %></h2>
+        <p><%= room.short_description %></p>
       </div>
     </div>
   </div>
 </div>
 <div class="mg-single-room-price">
-  <div class="mg-srp-inner">$249<sup>.99</sup><span>/Night</span></div>
+  <div class="mg-srp-inner">$<%= room.price %><sup>.00</sup><span>/Night</span></div>
 </div>
 <div class="mg-single-room">
   <div class="container">
@@ -22,14 +33,14 @@
       <div class="col-md-7">
         <div class="mg-gallery-container">
           <ul class="mg-gallery" id="mg-gallery">
-            <% dato.rooms.first.photos.each do |photo| %>
-              <li><img src="<%= photo.url w: 670, h: 350 %>" alt="Partner Logo"></li>
+            <% room.photos.each do |photo| %>
+              <li><img src="<%= photo.url w: 670, h: 350, fit: :crop %>" alt="Partner Logo"></li>
             <% end %>
             <!-- <li><img src="images/gallery-01.png" alt="Partner Logo"></li> -->
           </ul>
           <ul class="mg-gallery-thumb" id="mg-gallery-thumb">
-            <% dato.rooms.first.photos.each do |photo| %>
-              <li><img src="<%= photo.url  w: 100, h: 60 %>" alt="Partner Logo"></li>
+            <% room.photos.each do |photo| %>
+              <li><img src="<%= photo.url  w: 100, h: 60, fit: :crop %>" alt="Partner Logo"></li>
             <% end %>
             <!-- <li><img src="images/gallery-thumb-01.png" alt="Partner Logo"></li> -->
           </ul>
@@ -63,8 +74,7 @@
       <div class="col-md-12">
         <div class="mg-single-room-txt">
           <h2 class="mg-sec-left-title">Room Description</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fecerint persecuti praeterea mentitum minime mediocriterne intellegerem certa pariendarum frustra, quidque ipsis praeter minima, iuste posse perspici dividendo videtisne, aperiri exercitus. Ille vivamus philosophis approbantibus mundus suum probes vivatur. Existimo augeri omnium ego aiunt remotis, dissentias graecam improbe diceretur, intus vitae saluti plerumque quot postulet partiendo facimus desperantes. Albucius arbitrarer animadversionis flagitem explentur posse consequi iactare legendus cogitemus, maximasque difficiles, utraque grate viris ipsi divelli expedire meliore libenter dolendum, bonae maximis hinc.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impetus simulent rationem duo operam alliciat. Praetor fabulis medeam careret laetetur petulantes, incursione potiora nostram laborat nescius meminerit restincto adamare, misisti interesset inventore complectitur consentaneum, aeterno, inpendente probatum levitatibus honesta, defatigatio praeter ignorant, omnem medicorum, frui timidiores coerceri consilio labore certe. Prima dicemus. Facillimis fatendum magna curis illi referenda late ordinem, adhibenda perfecto cepisse dicturum dici migrare metu dirigentur parvos interpretaris. Putarent eoque morbis abducat summis futuris vult, amatoriis contenta ludicra spe.</p>
+          <%= room.full_description %>
         </div>
       </div>
     </div>

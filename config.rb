@@ -5,6 +5,17 @@ Dotenv.load
 
 set :url_root, 'http://entradaescalante.com'
 activate :search_engine_sitemap
+activate :dato, live_reload: true
+
+# KM 4/17/17: due to how middleman 4 collections work (http://bit.ly/2jHZTI9),
+# always use `dato` inside a `.tap` method block
+dato.tap do |dato|
+  dato.rooms.each do |room|
+    proxy "/rooms/#{room.slug}.html", '/templates/room', locals: {
+      room: room
+    }, ignore: true
+  end
+end
 
 ###
 # Page options, layouts, aliases and proxies
@@ -34,8 +45,6 @@ page '/*.txt', layout: false
 #     'Helping'
 #   end
 # end
-
-activate :dato, live_reload: true
 
 configure :development do
   activate :livereload

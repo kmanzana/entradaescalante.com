@@ -1,0 +1,63 @@
+---
+title: Entrada Escalante | Rooms
+active_tab: rooms
+---
+
+<div class="mg-page-title parallax">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Rooms</h2>
+        <p>Cogitavisse erant puerilis utrum efficiantur adhuc expeteretur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mg-page mg-available-rooms">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% dato.rooms.each do |room| %>
+          <div class="mg-avl-room">
+            <div class="row">
+              <div class="col-sm-5">
+                <% link_to "/rooms/#{room.slug}.html" do %>
+                  <%= image_tag "/images/#{room.slug}.jpg", alt: '', class: 'img-responsive' %>
+                <% end %>
+              </div>
+              <div class="col-sm-7">
+                <h3 class="mg-avl-room-title">
+                  <a href="#"><%= room.name %></a> <span>$<%= room.price %><sup>.00</sup>/Night</span>
+                </h3>
+                <p><%= room.short_description %></p>
+                <div class="row mg-room-fecilities">
+                  <div class="col-sm-6">
+                    <ul>
+                      <li><i class="fp-ht-bed"></i> 2 King Beds</li>
+                      <li><i class="fp-ht-food"></i> Breakfast</li>
+                      <li><i class="fa fa-sun-o"></i> Air conditioning</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6">
+                    <ul>
+                      <li><i class="fp-ht-dumbbell"></i> GYM fecility</li>
+                      <li><i class="fp-ht-tv"></i> TV LCD</li>
+                      <li><i class="fp-ht-computer"></i> Wi-fi service</li>
+                    </ul>
+                  </div>
+                </div>
+                <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-dark' do %>
+                  View Details <i class="fa fa-angle-double-right"></i>
+                <% end %>
+                <%= link_to 'Book Now',
+                            "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
+                            class: 'btn btn-main pull-right' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
