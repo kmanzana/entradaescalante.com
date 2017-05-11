@@ -1,12 +1,19 @@
 require 'dotenv'
 require 'slim'
-require 'yaml'
 
 Dotenv.load
 
 set :url_root, 'http://entradaescalante.com'
 activate :search_engine_sitemap
 activate :dato, live_reload: true
+
+###
+# Page options, layouts, aliases and proxies
+###
+
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
 
 # KM 4/17/17: due to how middleman 4 collections work (http://bit.ly/2jHZTI9),
 # always use `dato` inside a `.tap` method block
@@ -19,37 +26,20 @@ dato.tap do |dato|
 end
 
 ###
-# Page options, layouts, aliases and proxies
-###
-
-# Per-page layout changes:
-#
-# With no layout
-page '/*.xml', layout: false
-page '/*.json', layout: false
-page '/*.txt', layout: false
-
-# With alternative layout
-# page '/path/to/file.html', layout: :otherlayout
-
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy '/this-page-has-no-template.html', '/template-file.html', locals: {
-#  which_fake_page: 'Rendering a fake page with a local variable' }
-
-###
 # Helpers
 ###
-
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
 
 helpers do
   def markdown(source)
     Tilt[:markdown].new { source }.render(self)
+  end
+
+  def parse_and_split(amenities_text, limit: nil)
+    unless amenities_text.to_s.empty?
+      amenities = YAML.load(amenities_text)
+      amenities = amenities.first(limit) if limit
+      amenities.each_slice((amenities.size/2.0).ceil).to_a
+    end
   end
 end
 
@@ -57,7 +47,6 @@ configure :development do
   activate :livereload
   activate :pry
 end
-
 
 configure :build do
   activate :asset_hash

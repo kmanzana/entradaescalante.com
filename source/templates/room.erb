@@ -48,29 +48,26 @@ active_tab: rooms
           </ul>
         </div>
       </div>
-      <% unless room.amenities.to_s.empty? %>
-        <% amenities = YAML.load(room.amenities) %>
-        <% left, right = amenities.each_slice((amenities.size/2.0).ceil).to_a %>
-        <div class="col-md-5 mg-room-fecilities">
-          <h2 class="mg-sec-left-title">Room Amenities</h2>
-          <div class="row">
-            <div class="col-xs-6">
-              <ul>
-                <% left.each do |amenity| %>
-                  <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
-                <% end %>
-              </ul>
-            </div>
-            <div class="col-xs-6">
-              <ul>
-                <% right.each do |amenity| %>
+      <% left_amenities, right_amenities = parse_and_split(room.amenities) %>
+      <div class="col-md-5 mg-room-fecilities">
+        <h2 class="mg-sec-left-title">Room Amenities</h2>
+        <div class="row">
+          <div class="col-xs-6">
+            <ul>
+              <% left_amenities.each do |amenity| %>
                 <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
               <% end %>
-              </ul>
-            </div>
+            </ul>
+          </div>
+          <div class="col-xs-6">
+            <ul>
+              <% right_amenities.each do |amenity| %>
+              <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+            <% end %>
+            </ul>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-12">
