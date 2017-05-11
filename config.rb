@@ -1,5 +1,6 @@
 require 'dotenv'
 require 'slim'
+require 'yaml'
 
 Dotenv.load
 
@@ -54,6 +55,7 @@ end
 
 configure :development do
   activate :livereload
+  activate :pry
 end
 
 

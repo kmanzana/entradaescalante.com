@@ -31,22 +31,27 @@ active_tab: rooms
                   <a href="<%= "/rooms/#{room.slug}.html" %>"><%= room.name %></a> <span>$<%= room.price %><sup>.00</sup></span>
                 </h3>
                 <p><%= room.short_description %></p>
-                <div class="row mg-room-fecilities">
-                  <div class="col-sm-6">
-                    <ul>
-                      <li><i class="fp-ht-bed"></i> 2 King Beds</li>
-                      <li><i class="fp-ht-food"></i> Breakfast</li>
-                      <li><i class="fa fa-sun-o"></i> Air conditioning</li>
-                    </ul>
+
+                <% unless room.amenities.to_s.empty? %>
+                  <% amenities = YAML.load(room.amenities).first(6) %>
+                  <% left, right = amenities.each_slice((amenities.size/2.0).ceil).to_a %>
+                  <div class="row mg-room-fecilities">
+                    <div class="col-sm-6">
+                      <ul>
+                        <% left.each do |amenity| %>
+                          <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <ul>
+                        <% right.each do |amenity| %>
+                          <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+                        <% end %>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="col-sm-6">
-                    <ul>
-                      <li><i class="fp-ht-dumbbell"></i> GYM fecility</li>
-                      <li><i class="fp-ht-tv"></i> TV LCD</li>
-                      <li><i class="fp-ht-computer"></i> Wi-fi service</li>
-                    </ul>
-                  </div>
-                </div>
+                <% end %>
                 <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-dark' do %>
                   View Details <i class="fa fa-angle-double-right"></i>
                 <% end %>

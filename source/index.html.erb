@@ -73,7 +73,7 @@ active_tab: home
               <div class="col-md-4 col-xs-6">
                 <select class="cs-select cs-skin-elastic js-nights">
                   <option value="" disabled selected>Nights</option>
-                  <% (1..30).each do |nights| %>
+                  <% (1..14).each do |nights| %>
                     <option value="<%= nights %>"><%= nights %></option>
                   <% end %>
                 </select>
@@ -101,7 +101,7 @@ active_tab: home
           <% dato.rooms.each do |room| %>
             <div class='col-sm-4'>
               <figure class='mg-room'>
-                <%= image_tag "/images/#{room.slug}.jpg", alt: "#{room.name.downcase} room", class: 'img-responsive' %>
+                <%= image_tag room.photos.first.url(w: 360, h: 240, fit: :crop), alt: "#{room.name.downcase} room", class: 'img-responsive' %>
                 <figcaption>
                   <h2><%= room.name %></h2>
                   <div class='mg-room-price'>$<%= room.price %><sup>.00/Night</sup></div>

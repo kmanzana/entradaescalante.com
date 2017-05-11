@@ -6,11 +6,11 @@ active_tab: rooms
 
 <% content_for :scripts do %>
   <%= javascript_include_tag 'javascripts/moment.min',
+                             'javascripts/classie',
                              'javascripts/selectFx',
                              'javascripts/bootstrap-datepicker.min',
                              'javascripts/owl.carousel.min',
                              'javascripts/jssor.slider.mini',
-                             'javascripts/classie',
                              'javascripts/starrr.min',
                              'javascripts/nivo-lightbox.min',
                              'javascripts/search-rooms' %>
@@ -48,35 +48,35 @@ active_tab: rooms
           </ul>
         </div>
       </div>
-      <div class="col-md-5 mg-room-fecilities">
-        <h2 class="mg-sec-left-title">Room Fecilities</h2>
-        <div class="row">
-          <div class="col-xs-6">
-            <ul>
-              <li><i class="fp-ht-food"></i> Breakfast</li>
-              <li><i class="fa fa-sun-o"></i> Air conditioning</li>
-              <li><i class="fp-ht-parking"></i> Free Parking</li>
-              <li><i class="fp-ht-elevator"></i> Elevator</li>
-              <li><i class="fp-ht-maid"></i> Room service</li>
-            </ul>
-          </div>
-          <div class="col-xs-6">
-            <ul>
-              <li><i class="fp-ht-dumbbell"></i> GYM fecility</li>
-              <li><i class="fp-ht-tv"></i> TV LCD</li>
-              <li><i class="fp-ht-computer"></i> Wi-fi service</li>
-              <li><i class="fp-ht-bed"></i> 2 King Beds</li>
-              <li><i class="fp-ht-swimmingpool"></i> Swimming Pool</li>
-            </ul>
+      <% unless room.amenities.to_s.empty? %>
+        <% amenities = YAML.load(room.amenities) %>
+        <% left, right = amenities.each_slice((amenities.size/2.0).ceil).to_a %>
+        <div class="col-md-5 mg-room-fecilities">
+          <h2 class="mg-sec-left-title">Room Amenities</h2>
+          <div class="row">
+            <div class="col-xs-6">
+              <ul>
+                <% left.each do |amenity| %>
+                  <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-xs-6">
+              <ul>
+                <% right.each do |amenity| %>
+                <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+              <% end %>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="mg-single-room-txt">
           <h2 class="mg-sec-left-title">Room Description</h2>
-          <%= room.full_description %>
+          <%= markdown room.full_description %>
         </div>
       </div>
     </div>
@@ -100,14 +100,12 @@ active_tab: rooms
                     <div class="col-md-4 col-xs-6">
                       <select class="cs-select cs-skin-elastic js-nights">
                         <option value="" disabled selected>Nights</option>
-                        <% (1..30).each do |nights| %>
+                        <% (1..14).each do |nights| %>
                           <option value="<%= nights %>"><%= nights %></option>
                         <% end %>
                       </select>
                     </div>
                     <input type='hidden' class='js-room-type' name='room_type' value='<%= room.front_desk_anywhere_type %>'>
-                  </div>
-                  <div class='row'>
                     <div class="col-md-4">
                       <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
                     </div>
@@ -119,8 +117,6 @@ active_tab: rooms
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 <!-- <div class="mg-single-room-review-sec">
