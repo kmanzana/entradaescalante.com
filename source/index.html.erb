@@ -3,7 +3,10 @@ active_tab: home
 ---
 
 <% content_for :scripts do %>
-  <%= javascript_include_tag 'javascripts/bootstrap-datepicker.min',
+  <%= javascript_include_tag 'javascripts/moment.min',
+                             'javascripts/classie',
+                             'javascripts/selectFx',
+                             'javascripts/bootstrap-datepicker.min',
                              'javascripts/search-rooms' %>
 <% end %>
 
@@ -18,12 +21,12 @@ active_tab: home
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active beactive">
-      <%= image_tag 'images/slide-4.jpg', alt: 'spencer flat navajo sandstone near escalante' %>
+      <%= image_tag dato.homepage.landing.url, alt: 'spencer flat navajo sandstone near escalante' %>
       <div class="carousel-caption">
         <!-- <img src="images/stars.png" alt=""> -->
         <h2>Entrada Escalante Lodge</h2>
-        <p>A basecamp for your outdoor adventures, Entrada Escalante is the newest fine lodging hotel accommodation in the town of Escalante, Utah</p>
-        <p>We Stand With Grand Staircase and support public lands</p>
+        <p><%= dato.homepage.subtitle %></p>
+
       </div>
     </div>
     <!-- <div class="item">
@@ -68,33 +71,13 @@ active_tab: home
                 </div>
               </div>
               <div class="col-md-4 col-xs-6">
-                <div class="input-group date mg-check-out">
-                  <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                  <input type="text" class="form-control js-check-out" placeholder="Check Out">
-                </div>
+                <select class="cs-select cs-skin-elastic js-nights">
+                  <option value="" disabled selected>Nights</option>
+                  <% (1..14).each do |nights| %>
+                    <option value="<%= nights %>"><%= nights %></option>
+                  <% end %>
+                </select>
               </div>
-              <!-- <div class="col-md-3">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <select class="cs-select cs-skin-elastic">
-                      <option value="" disabled selected>Adult</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                    </select>
-                  </div>
-                  <div class="col-xs-6">
-                    <select class="cs-select cs-skin-elastic">
-                      <option value="" disabled selected>Child</option>
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </select>
-                  </div>
-                </div>
-              </div> -->
               <div class="col-md-4">
                 <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
               </div>
@@ -115,30 +98,24 @@ active_tab: home
           <p>Overview of our three room choices</p>
         </div>
         <div class="row">
-          <%= partial :_room, locals: {
-            image: :single_king,
-            image_alt: 'single king room',
-            name: 'Single King',
-            price: 139,
-            description: 'One king sized bed and private bathroom.',
-            room_type: 1
-          } %>
-          <%= partial :_room, locals: {
-            image: :double_queen_suite,
-            image_alt: 'double queen suite room',
-            name: 'Double Queen Suite',
-            price: 169,
-            description: 'Two queen sized beds with kitchenette and private bathroom.',
-            room_type: 2
-          } %>
-          <%= partial :_room, locals: {
-            image: :deluxe_king_suite,
-            image_alt: 'deluxe king suite room',
-            name: 'Deluxe King Suite',
-            price: 189,
-            description: 'One king sized bed, queen sofa sleeper, full kitchen, and private bathroom.',
-            room_type: 3
-          } %>
+          <% dato.rooms.each do |room| %>
+            <div class='col-sm-4'>
+              <figure class='mg-room'>
+                <%= image_tag room.photos.first.url(w: 360, h: 240, fit: :crop), alt: "#{room.name.downcase} room", class: 'img-responsive' %>
+                <figcaption>
+                  <h2><%= room.name %></h2>
+                  <div class='mg-room-price'>$<%= room.price %><sup>.00/Night</sup></div>
+                  <p><%= room.short_description %></p>
+                  <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-link' do %>
+                    View Details <i class='fa fa-angle-double-right'></i>
+                  <% end %>
+                  <%= link_to 'Book',
+                    "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
+                    class: 'btn btn-main', target: :_blank %>
+                </figcaption>
+              </figure>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -156,11 +133,11 @@ active_tab: home
     <div class="row">
       <div class="col-md-7">
         <h2 class="mg-sec-left-title">About the Entrada Escalante Lodge</h2>
-        <p>The Entrada Escalante is located in the heart of redrock canyon country in southern Utah. We are the newest fine lodging hotel facility in town offering suites with full kitchens and kitchenettes. Rooms are equipped with private patio seating facing the monocline of the Grand Staircase Escalante National Monument. We are a pet- and equine-friendly facility.</p>
+        <p><%= markdown dato.homepage.about_text %></p>
       </div>
       <div class="col-md-5">
         <div class="video-responsive">
-          <%= image_tag '/images/front.jpg', alt: 'view of the entrada escalante lodge buildings' %>
+          <%= image_tag dato.homepage.about_image.url, alt: 'view of the entrada escalante lodge buildings' %>
         </div>
         <!-- <div class="video-responsive">
           <iframe src="https://player.vimeo.com/video/134008155" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

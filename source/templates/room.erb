@@ -1,0 +1,213 @@
+---
+active_tab: rooms
+---
+
+<% current_page.data.title = "Entrada Escalante | #{room.name}" %>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'javascripts/moment.min',
+                             'javascripts/classie',
+                             'javascripts/selectFx',
+                             'javascripts/bootstrap-datepicker.min',
+                             'javascripts/owl.carousel.min',
+                             'javascripts/jssor.slider.mini',
+                             'javascripts/starrr.min',
+                             'javascripts/nivo-lightbox.min',
+                             'javascripts/search-rooms' %>
+<% end %>
+
+<div class="mg-page-title parallax">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><%= room.name %></h2>
+        <p><%= room.short_description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mg-single-room-price">
+  <div class="mg-srp-inner">$<%= room.price %><sup>.00</sup><span>/Night</span></div>
+</div>
+<div class="mg-single-room">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="mg-gallery-container">
+          <ul class="mg-gallery" id="mg-gallery">
+            <% room.photos.each do |photo| %>
+              <li><img src="<%= photo.url w: 670, h: 350, fit: :crop %>" alt="Partner Logo"></li>
+            <% end %>
+            <!-- <li><img src="images/gallery-01.png" alt="Partner Logo"></li> -->
+          </ul>
+          <ul class="mg-gallery-thumb" id="mg-gallery-thumb">
+            <% room.photos.each do |photo| %>
+              <li><img src="<%= photo.url  w: 100, h: 60, fit: :crop %>" alt="Partner Logo"></li>
+            <% end %>
+            <!-- <li><img src="images/gallery-thumb-01.png" alt="Partner Logo"></li> -->
+          </ul>
+        </div>
+      </div>
+      <% left_amenities, right_amenities = parse_and_split(room.amenities) %>
+      <div class="col-md-5 mg-room-fecilities">
+        <h2 class="mg-sec-left-title">Room Amenities</h2>
+        <div class="row">
+          <div class="col-xs-6">
+            <ul>
+              <% left_amenities.each do |amenity| %>
+                <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-xs-6">
+            <ul>
+              <% right_amenities.each do |amenity| %>
+              <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mg-single-room-txt">
+          <h2 class="mg-sec-left-title">Room Description</h2>
+          <%= markdown room.full_description %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mg-saerch-room pb70">
+        <div class="mg-book-now">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 class="mg-bn-title">Search Rooms <span class="mg-bn-big">For rates & availability</span></h2>
+            </div>
+            <div class="col-md-9">
+              <div class="mg-bn-forms">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                      <div class="input-group date mg-check-in">
+                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                        <input type="text" class="form-control js-check-in" id="exampleInputEmail1" placeholder="Check In">
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                      <select class="cs-select cs-skin-elastic js-nights">
+                        <option value="" disabled selected>Nights</option>
+                        <% (1..14).each do |nights| %>
+                          <option value="<%= nights %>"><%= nights %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                    <input type='hidden' class='js-room-type' name='room_type' value='<%= room.front_desk_anywhere_type %>'>
+                    <div class="col-md-4">
+                      <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="mg-single-room-review-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 clearfix">
+
+        <div class="mg-sm-full-rating">
+          <h2 class="mg-sec-left-title">Room Reviews</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="mg-reviews">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/review.png" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Dylan Taylor</h4>
+              <div class="mg-media-user-rating">
+                <span class="mg-rs-icon">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                </span>
+              </div>
+              <div class="media-date">25 Jan, 2015</div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+            </div>
+          </div>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="images/review.png" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Vincent Watson</h4>
+              <div class="mg-media-user-rating">
+                <span class="mg-rs-icon">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                </span>
+              </div>
+              <div class="media-date">25 Jan, 2015</div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perfunctio dicturum cupiditatibusque refugiendi facillimis genuit fecerit amoris atomos. Praeclarorum, superstitio quem nostra turpius</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-5">
+        <form>
+          <div class="row">
+            <div class="col-xs-6 mg-star-rating">
+              <div class="mg-star-rating-title">Position:</div> <div id="mg-star-position" class="starrr"></div>
+              <input type="hidden" id="mg-star-position-input">
+            </div>
+            <div class="col-xs-6 mg-star-rating">
+              <div class="mg-star-rating-title">Comfort:</div> <div id="mg-star-comfort" class="starrr"></div>
+              <input type="hidden" id="mg-star-comfort-input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 mg-star-rating">
+              <div class="mg-star-rating-title">Price:</div> <div id="mg-star-price" class="starrr"></div>
+              <input type="hidden" id="mg-star-price-input">
+            </div>
+            <div class="col-xs-6 mg-star-rating">
+              <div class="mg-star-rating-title">Quality:</div> <div id="mg-star-quality" class="starrr"></div>
+              <input type="hidden" id="mg-star-quality-input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Your Email">
+            </div>
+          </div>
+          <textarea class="form-control" placeholder="Your Comment" rows="5"></textarea>
+          <input type="submit" value="Submit Review" class="btn btn-dark pull-right">
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
