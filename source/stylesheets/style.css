@@ -2,6 +2,9 @@
 /* entrada C4764D */
 /* opaque entrada rgba(196, 118, 77, 0.9) */
 
+.check-availability {
+  background-color: #8DC2A1;
+}
 
 /*! (Sept - Site Template) 2015-10-10 */
 body {
@@ -1097,8 +1100,9 @@ a.navbar-brand {
   color: #fff !important;
   background-color: #8DC2A1 !important;
 }
-.mg-book-now .mg-bn-forms {
-  padding: 36px 0px;
+.mg-book-now .mg-input {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .mg-book-now .mg-bn-forms .input-group-addon {
   background-color: transparent;
@@ -3923,9 +3927,9 @@ div.cs-skin-elastic .cs-options .cs-selected span::after {
     margin-right: -15px;
     margin-left: -15px;
   }
-  .mg-book-now .mg-check-in {
+/*  .mg-book-now .mg-check-in {
     margin-bottom: 30px;
-  }
+  }*/
   .mg-book-now .mg-bn-title {
     text-align: center;
     box-shadow: none;

@@ -6,8 +6,7 @@ active_tab: home
   <%= javascript_include_tag 'javascripts/moment.min',
                              'javascripts/classie',
                              'javascripts/selectFx',
-                             'javascripts/bootstrap-datepicker.min',
-                             'javascripts/search-rooms' %>
+                             'javascripts/bootstrap-datepicker.min' %>
 <% end %>
 
 <div id="mega-slider" class="carousel slide" data-ride="carousel">
@@ -62,24 +61,46 @@ active_tab: home
       </div>
       <div class="col-md-9">
         <div class="mg-bn-forms">
-          <form>
+          <form method='post' action='//www.onressystems.com/webapp/book_search.asp'>
+            <input type="hidden" name="ReferringPage" value="entradaescalante.com">
+            <input type="hidden" name="VendorID" value="685">
+            <input type="hidden" name="HotelName" value="Entrada Escalante">
             <div class="row">
-              <div class="col-md-4 col-xs-6">
+              <div class="col-xs-4 mg-input">
                 <div class="input-group date mg-check-in">
                   <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                  <input type="text" class="form-control js-check-in" placeholder="Check In">
+                  <input name='StartDate' type="text" class="form-control" placeholder="Arrival">
                 </div>
               </div>
-              <div class="col-md-4 col-xs-6">
-                <select class="cs-select cs-skin-elastic js-nights">
+              <div class="col-xs-4 mg-input">
+                <select name='NumGuests' class="cs-select cs-skin-elastic">
+                  <option value="" disabled selected>Adults</option>
+                  <% (1..6).each do |adults| %>
+                    <option value="<%= adults %>"><%= adults %></option>
+                  <% end %>
+                </select>
+              </div>
+              <div class="col-xs-4 mg-input">
+                <input name='Code' type="text" class="form-control" placeholder="Promo Code">
+              </div>
+              <div class="col-xs-4 mg-input">
+                <select name='NumNights' class="cs-select cs-skin-elastic">
                   <option value="" disabled selected>Nights</option>
                   <% (1..14).each do |nights| %>
                     <option value="<%= nights %>"><%= nights %></option>
                   <% end %>
                 </select>
               </div>
-              <div class="col-md-4">
-                <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
+              <div class="col-xs-4 mg-input">
+                <select name='NumChildren' class="cs-select cs-skin-elastic">
+                  <option value="" disabled selected>Children</option>
+                  <% (1..6).each do |children| %>
+                    <option value="<%= children %>"><%= children %></option>
+                  <% end %>
+                </select>
+              </div>
+              <div class="col-xs-4 mg-input">
+                <button type="submit" class="btn btn-main btn-block">Check Now</button>
               </div>
             </div>
           </form>
@@ -110,8 +131,8 @@ active_tab: home
                     View Details <i class='fa fa-angle-double-right'></i>
                   <% end %>
                   <%= link_to 'Book',
-                    "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
-                    class: 'btn btn-main', target: :_blank %>
+                    "//onressystems.com/vendors/entradaescalante/reservations.html",
+                    class: 'btn btn-main' %>
                 </figcaption>
               </figure>
             </div>

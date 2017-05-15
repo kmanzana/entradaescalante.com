@@ -1,5 +1,4 @@
 ---
-active_tab: rooms
 ---
 
 <% current_page.data.title = "Entrada Escalante | #{room.name}" %>
@@ -12,8 +11,7 @@ active_tab: rooms
                              'javascripts/owl.carousel.min',
                              'javascripts/jssor.slider.mini',
                              'javascripts/starrr.min',
-                             'javascripts/nivo-lightbox.min',
-                             'javascripts/search-rooms' %>
+                             'javascripts/nivo-lightbox.min' %>
 <% end %>
 
 <div class="mg-page-title parallax">
@@ -87,25 +85,46 @@ active_tab: rooms
             </div>
             <div class="col-md-9">
               <div class="mg-bn-forms">
-                <form>
+                <form method='post' action='//www.onressystems.com/webapp/book_search.asp'>
+                  <input type="hidden" name="ReferringPage" value="entradaescalante.com">
+                  <input type="hidden" name="VendorID" value="685">
+                  <input type="hidden" name="HotelName" value="Entrada Escalante">
                   <div class="row">
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-xs-4 mg-input">
                       <div class="input-group date mg-check-in">
                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                        <input type="text" class="form-control js-check-in" id="exampleInputEmail1" placeholder="Check In">
+                        <input name='StartDate' type="text" class="form-control" placeholder="Arrival">
                       </div>
                     </div>
-                    <div class="col-md-4 col-xs-6">
-                      <select class="cs-select cs-skin-elastic js-nights">
+                    <div class="col-xs-4 mg-input">
+                      <select name='NumGuests' class="cs-select cs-skin-elastic">
+                        <option value="" disabled selected>Adults</option>
+                        <% (1..6).each do |adults| %>
+                          <option value="<%= adults %>"><%= adults %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                    <div class="col-xs-4 mg-input">
+                      <input name='Code' type="text" class="form-control" placeholder="Promo Code">
+                    </div>
+                    <div class="col-xs-4 mg-input">
+                      <select name='NumNights' class="cs-select cs-skin-elastic">
                         <option value="" disabled selected>Nights</option>
                         <% (1..14).each do |nights| %>
                           <option value="<%= nights %>"><%= nights %></option>
                         <% end %>
                       </select>
                     </div>
-                    <input type='hidden' class='js-room-type' name='room_type' value='<%= room.front_desk_anywhere_type %>'>
-                    <div class="col-md-4">
-                      <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
+                    <div class="col-xs-4 mg-input">
+                      <select name='NumChildren' class="cs-select cs-skin-elastic">
+                        <option value="" disabled selected>Children</option>
+                        <% (1..6).each do |children| %>
+                          <option value="<%= children %>"><%= children %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                    <div class="col-xs-4 mg-input">
+                      <button type="submit" class="btn btn-main btn-block">Check Now</button>
                     </div>
                   </div>
                 </form>
