@@ -62,8 +62,8 @@ active_tab: home
       </div>
       <div class="col-md-9">
         <div class="mg-bn-forms">
-          <form>
-            <div class="row">
+          <!-- <form> -->
+            <!-- <div class="row">
               <div class="col-md-4 col-xs-6">
                 <div class="input-group date mg-check-in">
                   <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
@@ -81,8 +81,16 @@ active_tab: home
               <div class="col-md-4">
                 <button type="submit" class="btn btn-main btn-block js-search-rooms">Check Now</button>
               </div>
+            </div> -->
+            <div class="row">
+              <div class="col-md-8 col-xs-6">
+                <p style='color: white;'>We are currently changing reservation systems. Please call <a href='tel:14358264000'>435-826-4000</a> to book.</p>
+              </div>
+              <div class="col-md-4 col-xs-6">
+                <a href='tel:14358264000' class="btn btn-main btn-block">Call Now</a>
+              </div>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </div>
@@ -109,9 +117,10 @@ active_tab: home
                   <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-link' do %>
                     View Details <i class='fa fa-angle-double-right'></i>
                   <% end %>
-                  <%= link_to 'Book',
+                  <%#= link_to 'Book',
                     "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
                     class: 'btn btn-main', target: :_blank %>
+                  <%= link_to 'Call', 'tel:14358264000', class: 'btn btn-main' %>
                 </figcaption>
               </figure>
             </div>

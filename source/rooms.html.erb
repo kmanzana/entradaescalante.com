@@ -52,9 +52,7 @@ active_tab: rooms
                 <% link_to "/rooms/#{room.slug}.html", class: 'btn btn-dark' do %>
                   View Details <i class="fa fa-angle-double-right"></i>
                 <% end %>
-                <%= link_to 'Book Now',
-                            "//bookings.frontdeskanywhere.net/#account/1ZN160825A?source=website_book&rt=#{room.front_desk_anywhere_type}",
-                            class: 'btn btn-main pull-right' %>
+                <%= link_to 'Call Now', 'tel:14358264000', class: 'btn btn-main pull-right' %>
               </div>
             </div>
           </div>
