@@ -931,6 +931,12 @@ a.navbar-brand {
       -ms-transform: translate(0, 50%);
           transform: translate(0, 50%);
 }
+@media (max-width: 991px) {
+  .carousel-caption {
+    right: 5%;
+    left: 5%;
+  }
+}
 .carousel-caption > h2 {
   font-family: 'Poiret One', sans-serif; /* title */
   color: #fff;

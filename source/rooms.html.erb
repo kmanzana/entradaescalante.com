@@ -23,7 +23,7 @@ active_tab: rooms
             <div class="row">
               <div class="col-sm-5">
                 <% link_to "/rooms/#{room.slug}.html" do %>
-                  <%= image_tag "/images/#{room.slug}.jpg", alt: '', class: 'img-responsive' %>
+                  <%= image_tag room.photos.first.url(w: 460, h: 310, fit: :crop), alt: room.photos.first.alt, class: 'img-responsive' %>
                 <% end %>
               </div>
               <div class="col-sm-7">

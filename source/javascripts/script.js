@@ -211,7 +211,7 @@
     });
 
     sync2.owlCarousel({
-      items : 3,
+      items: 3,
       itemsDesktop: [1199,3],
       itemsDesktopSmall: [979,3],
       itemsTablet: [768,3],
