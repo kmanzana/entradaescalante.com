@@ -1,7 +1,8 @@
-notifications:
-  webhooks:
-    - https://webhooks.datocms.com/058c8a84fefc28b8d2fc/deploy-results # staging
-    - https://webhooks.datocms.com/0f5e9cf86585015d5212/deploy-results # production
+# KM 5/15/17: notifications config provided by DatoCMS
+# notifications:
+#   webhooks:
+#     - https://webhooks.datocms.com/058c8a84fefc28b8d2fc/deploy-results # staging
+#     - https://webhooks.datocms.com/0f5e9cf86585015d5212/deploy-results # production
 language: ruby
 rvm:
   - 2.4.0
