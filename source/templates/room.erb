@@ -36,15 +36,16 @@ active_tab: rooms
         <div class="mg-gallery-container">
           <ul class="mg-gallery" id="mg-gallery">
             <% room.photos.each do |photo| %>
-              <li><img src="<%= photo.url w: 670, h: 350, fit: :crop %>" alt="Partner Logo"></li>
+              <li>
+                <img class='hidden-xs' src="<%= photo.url w: 670, h: 350, fit: :crop %>" alt="<%= photo.alt %>">
+                <img class='visible-xs' src="<%= photo.url w: 400, h: 350, fit: :crop %>" alt="<%= photo.alt %>">
+              </li>
             <% end %>
-            <!-- <li><img src="images/gallery-01.png" alt="Partner Logo"></li> -->
           </ul>
           <ul class="mg-gallery-thumb" id="mg-gallery-thumb">
             <% room.photos.each do |photo| %>
-              <li><img src="<%= photo.url  w: 100, h: 60, fit: :crop %>" alt="Partner Logo"></li>
+              <li><img src="<%= photo.url  w: 100, h: 60, fit: :crop %>" alt="photo.alt"></li>
             <% end %>
-            <!-- <li><img src="images/gallery-thumb-01.png" alt="Partner Logo"></li> -->
           </ul>
         </div>
       </div>
@@ -52,14 +53,14 @@ active_tab: rooms
       <div class="col-md-5 mg-room-fecilities">
         <h2 class="mg-sec-left-title">Room Amenities</h2>
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-sm-6">
             <ul>
               <% left_amenities.each do |amenity| %>
                 <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
               <% end %>
             </ul>
           </div>
-          <div class="col-xs-6">
+          <div class="col-sm-6">
             <ul>
               <% right_amenities.each do |amenity| %>
               <li><i class='<%= amenity[0] %>'></i> <%= amenity[1] %></li>
