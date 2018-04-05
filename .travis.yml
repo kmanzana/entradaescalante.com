@@ -5,7 +5,7 @@
 #     - https://webhooks.datocms.com/0f5e9cf86585015d5212/deploy-results # production
 language: ruby
 rvm:
-  - 2.4.0
+  - 2.5.1
 cache: bundler
 branches:
   only:
