@@ -11,6 +11,8 @@ branches:
   only:
   - master
   - staging
+before_install:
+  - gem install bundler
 deploy:
   - provider: script
     script: rvm $TRAVIS_RUBY_VERSION do ./deploy.sh staging
