@@ -5,7 +5,6 @@ Dotenv.load
 
 set :url_root, 'http://entradaescalante.com'
 activate :search_engine_sitemap
-activate :dato, live_reload: true
 
 ###
 # Page options, layouts, aliases and proxies
@@ -15,13 +14,16 @@ page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
-# KM 4/17/17: due to how middleman 4 collections work (http://bit.ly/2jHZTI9),
-# always use `dato` inside a `.tap` method block
-dato.tap do |dato|
-  dato.rooms.each do |room|
-    proxy "/rooms/#{room.slug}.html", '/templates/room', locals: {
-      room: room
-    }, ignore: true
+def setup_dato(live_reload: false)
+  activate :dato, live_reload: live_reload
+
+  # KM 4/17/17: due to how middleman 4 collections work (http://bit.ly/2jHZTI9),
+  dato.tap do |dato|
+    dato.rooms.each do |room|
+      proxy "/rooms/#{room.slug}.html", '/templates/room', locals: {
+        room: room
+      }, ignore: true
+    end
   end
 end
 
@@ -44,11 +46,15 @@ helpers do
 end
 
 configure :development do
+  setup_dato live_reload: true
+
   activate :livereload
   activate :pry
 end
 
 configure :build do
+  setup_dato
+
   activate :asset_hash
   activate :gzip
   # activate :imageoptim # doesn't support MM4 https://github.com/plasticine/middleman-imageoptim/issues/46

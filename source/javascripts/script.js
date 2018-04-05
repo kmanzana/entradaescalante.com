@@ -425,6 +425,9 @@ $(window).load(function () {
     $sizer = $grid.find('.shuffle__sizer'),
     $filterType = $('#mg-filter input[name="filter"]');
 
+  if ($grid.length == 0)
+    return;
+
   $grid.shuffle({
     itemSelector: '.mg-gallery-item',
     sizer: $sizer
