@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.4.0'
+ruby `cat ./.ruby-version`.chomp
 
 gem "middleman-dato"
 gem 'dotenv'

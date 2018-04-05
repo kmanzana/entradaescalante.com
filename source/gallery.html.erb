@@ -9,7 +9,9 @@ active_tab: gallery
 <% end %>
 
 <% content_for :scripts do %>
-  <%= javascript_include_tag '/javascripts/nivo-lightbox.min' %>
+  <%= javascript_include_tag '/javascripts/nivo-lightbox.min',
+                             '/javascripts/modernizr.custom.min',
+                             '/javascripts/jquery.shuffle.min' %>
 <% end %>
 
 <div class="mg-page-title parallax">
